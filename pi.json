@@ -1,0 +1,18 @@
+{
+  "name": "stepwise",
+  "version": "0.1.0",
+  "description": "An opinionated, linear 4-command workflow for the Pi coding agent. Every command tells you exactly what to run next — kickoff, build, stuck, review.",
+  "author": "",
+  "license": "MIT",
+  "pi": {
+    "skills": "skills",
+    "prompts": "prompts"
+  },
+  "keywords": [
+    "workflow",
+    "tdd",
+    "planning",
+    "pi-extension",
+    "agent"
+  ]
+}
