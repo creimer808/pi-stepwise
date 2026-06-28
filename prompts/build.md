@@ -1,6 +1,6 @@
 ---
 name: build
-description: Implement the next unchecked task in PLAN.md, TDD when it involves logic.
+description: Implement the next unblocked issue as a vertical slice, TDD when it involves logic.
 ---
 
 Load and follow the **build** skill.
@@ -8,11 +8,11 @@ Load and follow the **build** skill.
 You are entering the **BUILD** phase of the Stepwise workflow.
 
 Your job:
-1. Read `.workflow/PLAN.md` and find the first unchecked task.
-2. Announce the task, then implement it. If it involves logic/functions/utils (not pure UI/config), write a failing test first, then make it pass.
-3. Check the task off in `.workflow/PLAN.md`.
-4. Tell the user to run `/build` again if tasks remain, or `/review` if the plan is complete.
+1. Find the active feature under `.workflow/` and pick the lowest-numbered issue that isn't `done` and whose `blocked-by` issues are all `done`.
+2. Announce it, then implement the whole vertical slice. For logic, use the tracer-bullet loop — one failing test → minimal code → repeat. Build pure UI/config directly.
+3. Tick the issue's acceptance criteria and set its `status` to `done`.
+4. Tell the user to run `/build` again if issues remain, or `/review` if all slices are complete.
 
-Follow the build skill exactly. Implement only the one task you announced.
+Follow the build skill exactly. Implement only the one issue you announced. If you get stuck, tell the user to run `/stuck`.
 
 $ARGUMENTS
