@@ -49,27 +49,46 @@ Each issue is a **tracer bullet**: a thin slice that cuts end-to-end through *ev
 
 ## Install
 
-This is a Pi extension package. Install it into a project (or globally) with the Pi CLI:
+This is a [Pi package](https://pi.dev/docs). You need Pi installed first:
 
 ```bash
-pi add stepwise
-# or from a local checkout:
-pi add ./stepwise
+npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+# or:  curl -fsSL https://pi.dev/install.sh | sh
 ```
 
-Pi auto-discovers the package's **prompt templates** (`prompts/`) as the `/kickoff`, `/build`, `/stuck`, and `/review` slash commands, and loads the matching **skill** (`skills/<name>/SKILL.md`) on demand when each command runs.
+Then add Stepwise with `pi install`. Pick the scope you want:
 
-Then, in any project:
+```bash
+# Global — available in every project (writes ~/.pi/agent/settings.json)
+pi install git:github.com/creimer808/pi-stepwise
+
+# Project-only — writes .pi/settings.json, which you can commit so your
+# team gets it automatically (Pi installs it on startup once the project is trusted)
+pi install -l git:github.com/creimer808/pi-stepwise
+
+# Try it for a single run without installing anything
+pi -e git:github.com/creimer808/pi-stepwise
+```
+
+Pin a version with a tag or commit, e.g. `pi install git:github.com/creimer808/pi-stepwise@v0.2.0`. Other source forms also work — a local checkout (`pi install ./pi-stepwise`) or, if published, npm (`pi install npm:pi-stepwise`). Update later with `pi update --extensions`, remove with `pi remove git:github.com/creimer808/pi-stepwise`, and list installed packages with `pi list`.
+
+> **Security note:** Pi packages run with full system access and skills can instruct the agent to run commands. Review the source before installing — this one only reads/writes files under `.workflow/` and your project, and runs your existing test runner.
+
+### Using it
+
+Start Pi in your project (`pi`), then type the slash commands. Pi loads the four **prompt templates** (`prompts/`) as `/kickoff`, `/build`, `/stuck`, `/review`, and pulls in the matching **skill** (`skills/<name>/SKILL.md`) on demand when each runs:
 
 ```
 /kickoff
 ```
 
+If the agent ever skips loading a skill, you can force it directly with `/skill:kickoff` (or `build`/`stuck`/`review`). Confirm everything registered with `/help` or by typing `/` to see the autocomplete list.
+
 ## Package layout
 
 ```
 stepwise/
-├── pi.json                  # package manifest (points Pi at skills/ and prompts/)
+├── package.json             # Pi manifest (the `pi` key points at skills/ and prompts/)
 ├── README.md
 ├── prompts/                 # slash commands — thin entry points that name the phase
 │   ├── kickoff.md

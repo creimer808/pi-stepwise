@@ -1,18 +1,21 @@
 {
-  "name": "stepwise",
+  "name": "pi-stepwise",
   "version": "0.2.0",
   "description": "An opinionated, linear 4-command workflow for the Pi coding agent: kickoff (PRD + vertical-slice issues) → build (TDD per slice) → stuck (feedback-loop-first debugging) → review. Every command tells you exactly what to run next.",
-  "author": "",
   "license": "MIT",
-  "pi": {
-    "skills": "skills",
-    "prompts": "prompts"
-  },
   "keywords": [
+    "pi-package",
     "workflow",
     "tdd",
     "planning",
-    "pi-extension",
     "agent"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creimer808/pi-stepwise.git"
+  },
+  "pi": {
+    "skills": ["./skills"],
+    "prompts": ["./prompts"]
+  }
 }
