@@ -84,13 +84,35 @@ Start Pi in your project (`pi`), then type the slash commands. Pi loads the four
 
 If the agent ever skips loading a skill, you can force it directly with `/skill:kickoff` (or `build`/`stuck`/`review`). Confirm everything registered with `/help` or by typing `/` to see the autocomplete list.
 
+## Use with Cursor
+
+Cursor implements the same [Agent Skills](https://agentskills.io) standard as Pi, so the `skills/` folders work there unchanged — `name` already matches each folder, and reference files load on demand. You don't need the `prompts/` templates in Cursor: **the skill name *is* the slash command** (`/kickoff`, `/build`, `/stuck`, `/review`).
+
+Run the bundled installer — it copies the four skills to wherever Cursor looks:
+
+```bash
+git clone https://github.com/creimer808/pi-stepwise && cd pi-stepwise
+
+./install-cursor.sh                # global Cursor:   ~/.cursor/skills
+./install-cursor.sh --project      # this project:    .cursor/skills (commit to share with a team)
+./install-cursor.sh --agents       # shared, global:  ~/.agents/skills  (Pi AND Cursor read this)
+./install-cursor.sh --agents --project   # shared, project: .agents/skills
+```
+
+Or copy by hand: `cp -r skills/* ~/.cursor/skills/`. Then open Cursor's Agent chat and type `/kickoff`.
+
+> **One workflow, both tools.** Pi and Cursor both auto-discover `.agents/skills/` (project) and `~/.agents/skills/` (global). Install there with `--agents` and a single set of files drives both harnesses.
+>
+> **Want strict, user-only invocation?** Add `disable-model-invocation: true` to each `SKILL.md` frontmatter so Cursor's agent never auto-fires a phase — you still trigger them manually with `/kickoff` etc.
+
 ## Package layout
 
 ```
 stepwise/
 ├── package.json             # Pi manifest (the `pi` key points at skills/ and prompts/)
 ├── README.md
-├── prompts/                 # slash commands — thin entry points that name the phase
+├── install-cursor.sh        # copies skills/ into Cursor (.cursor/skills) or shared (.agents/skills)
+├── prompts/                 # slash commands — thin entry points that name the phase (Pi only)
 │   ├── kickoff.md
 │   ├── build.md
 │   ├── stuck.md
