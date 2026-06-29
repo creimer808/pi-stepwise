@@ -26,7 +26,7 @@ _Avoid_: client, buyer, account
 
 ## Rules
 
-- **Be opinionated.** When several words exist for one concept, pick the best and list the rest under `_Avoid_`. `/review` flags `_Avoid_` terms that leak into code.
+- **Be opinionated.** When several words exist for one concept, pick the best and list the rest under `_Avoid_`. `/stepwise-review` flags `_Avoid_` terms that leak into code.
 - **Keep definitions tight.** One or two sentences. Define what it *is*, not what it *does*.
 - **Only project-specific terms.** General programming concepts (timeouts, retries, error types) do not belong, even if used heavily. Ask: is this unique to this domain, or generic? Only the former belongs.
 - **No implementation details.** No file paths, no code, no schema. This is not a spec or a scratchpad — it is a dictionary.

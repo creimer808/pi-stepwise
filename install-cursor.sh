@@ -48,6 +48,6 @@ for skill in "$SRC"/*/; do
 done
 
 echo
-echo "Done. Open Cursor's Agent chat and type /kickoff to start."
+echo "Done. Open Cursor's Agent chat and type /stepwise-kickoff to start."
 [ "$scope" = "project" ] && echo "Tip: commit $dest so your team gets the workflow too."
 true

@@ -1,6 +1,6 @@
 {
   "name": "pi-stepwise",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "An opinionated, linear 4-command workflow for the Pi coding agent: kickoff (PRD + vertical-slice issues) → build (TDD per slice) → stuck (feedback-loop-first debugging) → review. Every command tells you exactly what to run next.",
   "license": "MIT",
   "keywords": [

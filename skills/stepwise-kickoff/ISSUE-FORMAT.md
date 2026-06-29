@@ -7,7 +7,7 @@ One file per issue: `.workflow/<feature-slug>/issues/NN-<slug>.md`, numbered fro
 - Each issue is a thin **vertical** slice cutting end-to-end through ALL layers (schema, API, UI, tests) — **not** a horizontal slice of one layer.
 - A completed slice is **demoable or verifiable on its own**.
 - Any prefactoring ("make the change easy, then make the easy change") is its own earliest issue.
-- Keep slices small enough that a single `/build` run finishes one.
+- Keep slices small enough that a single `/stepwise-build` run finishes one.
 
 ## File template
 
@@ -34,4 +34,4 @@ A concise description of this vertical slice. Describe the end-to-end behavior, 
 - PRD story #1, #4
 ```
 
-`/build` reads `status` and `blocked-by` to choose the next workable issue, and checks the acceptance-criteria boxes as it satisfies them.
+`/stepwise-build` reads `status` and `blocked-by` to choose the next workable issue, and checks the acceptance-criteria boxes as it satisfies them.

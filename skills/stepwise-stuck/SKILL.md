@@ -1,6 +1,6 @@
 ---
-name: stuck
-description: STUCK phase of the Stepwise workflow. A diagnosis loop for broken things — build a tight red-capable feedback loop FIRST, then minimize, rank hypotheses, instrument, fix, and add a regression test. Use when the user runs /stuck or reports something broken/failing/slow.
+name: stepwise-stuck
+description: STUCK phase of the Stepwise workflow. A diagnosis loop for broken things — build a tight red-capable feedback loop FIRST, then minimize, rank hypotheses, instrument, fix, and add a regression test. Use when the user runs /stepwise-stuck or reports something broken/failing/slow.
 ---
 
 # Stepwise — STUCK
@@ -49,6 +49,6 @@ Write the regression test **before** the fix — *if* a correct seam exists (one
 
 End with:
 
-> **Resolved.** Root cause: {one line}. Regression test: {name} (or: no seam — documented). Run **`/build`** to continue.
+> **Resolved.** Root cause: {one line}. Regression test: {name} (or: no seam — documented). Run **`/stepwise-build`** to continue.
 
-Then ask: what would have prevented this? If the answer is architectural (no test seam, tangled callers), say so — it's a candidate for the next `/review`.
+Then ask: what would have prevented this? If the answer is architectural (no test seam, tangled callers), say so — it's a candidate for the next `/stepwise-review`.

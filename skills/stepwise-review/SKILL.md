@@ -1,6 +1,6 @@
 ---
-name: review
-description: REVIEW phase of the Stepwise workflow. Zoom out over the whole codebase, audit structure and naming against CONTEXT.md and the PRD, and write findings to .workflow/<feature>/REVIEW.md. Documents only — makes no code changes. Use when the user runs /review or all issues are done.
+name: stepwise-review
+description: REVIEW phase of the Stepwise workflow. Zoom out over the whole codebase, audit structure and naming against CONTEXT.md and the PRD, and write findings to .workflow/<feature>/REVIEW.md. Documents only — makes no code changes. Use when the user runs /stepwise-review or all issues are done.
 ---
 
 # Stepwise — REVIEW
@@ -18,7 +18,7 @@ Identify the active feature folder under `.workflow/`. Read its `PRD.md` and the
 - **Repeated logic** — the same logic in 2+ places that should be extracted.
 - **Naming drift** — identifiers that don't match the `CONTEXT.md` glossary, or `_Avoid_` terms that leaked into code, or one concept named two ways.
 - **Leaky boundaries** — UI doing data access, utils knowing about HTTP, etc.
-- **Test gaps** — logic with no behavioral coverage that will break silently; bug-prone seams `/stuck` flagged as untestable.
+- **Test gaps** — logic with no behavioral coverage that will break silently; bug-prone seams `/stepwise-stuck` flagged as untestable.
 
 **Spec** — does the code match what the PRD asked for?
 - Requirements that are missing or only partial.
@@ -58,6 +58,6 @@ Order findings by priority. If the codebase is genuinely clean, say so — don't
 
 End with exactly:
 
-> **Review complete.** Findings → `.workflow/<feature-slug>/REVIEW.md`. Either run **`/kickoff`** to turn the findings into a focused cleanup plan, or call it done.
+> **Review complete.** Findings → `.workflow/<feature-slug>/REVIEW.md`. Either run **`/stepwise-kickoff`** to turn the findings into a focused cleanup plan, or call it done.
 
-Do not start fixing — that's a new `/kickoff` → `/build` cycle.
+Do not start fixing — that's a new `/stepwise-kickoff` → `/stepwise-build` cycle.

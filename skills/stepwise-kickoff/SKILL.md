@@ -1,6 +1,6 @@
 ---
-name: kickoff
-description: KICKOFF phase of the Stepwise workflow. Interview the user one question at a time, then produce three artifacts — a strict domain glossary (.workflow/CONTEXT.md), a synthesized PRD (.workflow/<feature>/PRD.md), and a folder of vertical-slice issues (.workflow/<feature>/issues/NN-*.md). Use when the user runs /kickoff or starts anything new.
+name: stepwise-kickoff
+description: KICKOFF phase of the Stepwise workflow. Interview the user one question at a time, then produce three artifacts — a strict domain glossary (.workflow/CONTEXT.md), a synthesized PRD (.workflow/<feature>/PRD.md), and a folder of vertical-slice issues (.workflow/<feature>/issues/NN-*.md). Use when the user runs /stepwise-kickoff or starts anything new.
 ---
 
 # Stepwise — KICKOFF
@@ -27,7 +27,7 @@ Choose a short kebab-case slug for this body of work (e.g. `user-auth`, `csv-exp
 
 ## 3. Write the glossary — `.workflow/CONTEXT.md`
 
-The project-wide ubiquitous language. **Glossary only — zero implementation details, no file paths, no code.** Be opinionated: when several words mean the same thing, pick one and list the rest under `_Avoid_`. Follow [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md). This file persists across features and is what `/review` later checks naming against. If it already exists, sharpen it rather than overwrite it.
+The project-wide ubiquitous language. **Glossary only — zero implementation details, no file paths, no code.** Be opinionated: when several words mean the same thing, pick one and list the rest under `_Avoid_`. Follow [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md). This file persists across features and is what `/stepwise-review` later checks naming against. If it already exists, sharpen it rather than overwrite it.
 
 ## 4. Synthesize the PRD — `.workflow/<feature-slug>/PRD.md`
 
@@ -43,4 +43,4 @@ Present the proposed breakdown as a numbered list (title, blocked-by, user stori
 
 Print the issue list, then end with exactly:
 
-> **Kickoff complete.** Glossary → `.workflow/CONTEXT.md`. PRD + issues → `.workflow/<feature-slug>/`. Run **`/build`** to start the first unblocked issue.
+> **Kickoff complete.** Glossary → `.workflow/CONTEXT.md`. PRD + issues → `.workflow/<feature-slug>/`. Run **`/stepwise-build`** to start the first unblocked issue.

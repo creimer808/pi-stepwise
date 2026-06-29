@@ -1,6 +1,6 @@
 ---
-name: build
-description: BUILD phase of the Stepwise workflow. Pick the next unblocked issue from .workflow/<feature>/issues/, implement it as a vertical slice (TDD for logic, direct for pure UI/config), check off its acceptance criteria, mark it done, and hand off to /build or /review. Use when the user runs /build.
+name: stepwise-build
+description: BUILD phase of the Stepwise workflow. Pick the next unblocked issue from .workflow/<feature>/issues/, implement it as a vertical slice (TDD for logic, direct for pure UI/config), check off its acceptance criteria, mark it done, and hand off to /stepwise-build or /stepwise-review. Use when the user runs /stepwise-build.
 ---
 
 # Stepwise — BUILD
@@ -11,7 +11,7 @@ You are in the **BUILD** phase. Implement exactly **one** issue per run — the 
 
 Look under `.workflow/` for feature folders containing an `issues/` directory.
 
-- None exist → tell the user to run `/kickoff` first. Stop.
+- None exist → tell the user to run `/stepwise-kickoff` first. Stop.
 - One has unfinished issues → that's the active feature.
 - Several have unfinished issues → ask the user which feature to work on. Stop until they answer.
 
@@ -19,8 +19,8 @@ Look under `.workflow/` for feature folders containing an `issues/` directory.
 
 Read every issue file's frontmatter (`status`, `blocked-by`). Choose the **lowest-numbered** issue where `status` is not `done` **and** every issue in its `blocked-by` is `done`.
 
-- No issues left undone → all slices are complete. Tell the user to run `/review`. Stop.
-- Issues remain but none are unblocked → report the blockage: list each remaining issue and what it's waiting on. Stop. (This usually means a `blocked-by` is wrong — suggest re-running `/kickoff` to fix dependencies.)
+- No issues left undone → all slices are complete. Tell the user to run `/stepwise-review`. Stop.
+- Issues remain but none are unblocked → report the blockage: list each remaining issue and what it's waiting on. Stop. (This usually means a `blocked-by` is wrong — suggest re-running `/stepwise-kickoff` to fix dependencies.)
 
 Set the chosen issue's `status` to `in-progress` and announce it verbatim:
 
@@ -51,7 +51,7 @@ In the issue file: tick every satisfied `- [ ]` acceptance criterion to `- [x]`,
 
 End with exactly one of:
 
-- Workable issues remain → **Issue {NN} done. Run `/build` for the next slice.**
-- All issues now done → **All slices complete. Run `/review` to audit before calling it done.**
+- Workable issues remain → **Issue {NN} done. Run `/stepwise-build` for the next slice.**
+- All issues now done → **All slices complete. Run `/stepwise-review` to audit before calling it done.**
 
-If you got stuck and can't get the slice to green, stop and tell the user to run **`/stuck`**.
+If you got stuck and can't get the slice to green, stop and tell the user to run **`/stepwise-stuck`**.
